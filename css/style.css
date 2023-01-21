@@ -62,5 +62,5 @@ body, html {
   top: -90vh;
   left: -10vh;
   opacity: 0.5;
-  filter: saturate(10) blur(120px);
+  filter: saturate(10) blur(200px);
 }

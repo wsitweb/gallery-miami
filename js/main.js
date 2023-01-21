@@ -20,3 +20,16 @@ const sliderBg = new Swiper('.slider_bg', {
     slidesPerView: 3.5,
 });
 sliderMain.controller.control = sliderBg;
+let itemOld;
+document.querySelectorAll('.slider_main .slider__item').forEach(item => {
+    item.addEventListener('click', event => {
+        if(itemOld){
+            itemOld.classList.toggle('opened');
+            item.classList.toggle('opened');
+            itemOld = item;
+        }else if(itemOld == undefined){
+            item.classList.toggle('opened');
+            itemOld = item;
+        };
+    });
+});
