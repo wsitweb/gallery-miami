@@ -46,6 +46,12 @@ body, html {
   max-height: 75vh;
   overflow: hidden;
   cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.slider__item.opened {
+  z-index: 2;
+  transform: rotate(-15deg) scale(1.4);
+  box-shadow: rgba(0, 0, 0, 0.75) 0 0 0 400vw;
 }
 .slider__img {
   width: 300%;
@@ -55,12 +61,40 @@ body, html {
   left: -100%;
   transition: var(--transition) !important;
 }
-
 .slider_bg {
   z-index: 0;
   transform: rotate(-30deg) !important;
   top: -90vh;
   left: -10vh;
-  opacity: 0.5;
-  filter: saturate(10) blur(200px);
+  opacity: 0.15;
+  filter: blur(120px) saturate(10);
+}
+
+.description {
+  position: absolute;
+  font-size: calc(var(--sizeIndex) * 0.8);
+  top: 20vh;
+  left: 8vw;
+  max-width: 24vw;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.description .logo {
+  font-size: calc(var(--sizeIndex) * 3.6);
+  font-weight: 900;
+  display: inline-block;
+  background: linear-gradient(45deg, DarkMagenta, Tomato, Violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.description p {
+  opacity: 0.9;
+  transition: transform var(--transition);
+  transition-duration: 3s;
+}
+.description.hidden {
+  opacity: 0;
+  transform: translateY(5vh);
+}
+.description.hidden p {
+  transform: translateY(5vh);
 }

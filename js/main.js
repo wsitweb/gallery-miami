@@ -23,13 +23,23 @@ sliderMain.controller.control = sliderBg;
 let itemOld;
 document.querySelectorAll('.slider_main .slider__item').forEach(item => {
     item.addEventListener('click', event => {
-        if(itemOld){
-            itemOld.classList.toggle('opened');
-            item.classList.toggle('opened');
-            itemOld = item;
-        }else if(itemOld == undefined){
-            item.classList.toggle('opened');
-            itemOld = item;
-        };
+            if(itemOld){
+                if(itemOld != item){
+                    itemOld.classList.remove('opened');
+                    item.classList.add('opened');
+                    itemOld = item;
+                }else if(itemOld = item){
+                    item.classList.toggle('opened');
+                    itemOld = item;
+                }
+            }else if(itemOld == undefined){
+                item.classList.toggle('opened');
+                itemOld = item;
+            };
     });
+});
+
+let desc = document.querySelector('.description');
+sliderMain.on('slideChange', e => {
+    sliderMain.activeIndex > 0 ? desc.classList.add('hidden') : desc.classList.remove('hidden')
 });
